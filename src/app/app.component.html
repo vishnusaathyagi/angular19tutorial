@@ -1,0 +1,28 @@
+<!-- app.component.html -->
+<h1> API Call Service </h1>
+<a routerLink="admin">Admin</a>
+<router-outlet></router-outlet>
+
+<form #userForm="ngForm" (ngSubmit)="addUser(userForm.value)">
+  <!-- Bind form inputs to selectedUser for edit mode -->
+  <input type="text" placeholder="enter name" name="name" [ngModel]="selectedUser?.name" > <br> <br>  
+  <input type="text" placeholder="enter email" name="email" [ngModel]="selectedUser?.email"> <br> <br>
+  <input type="text" placeholder="enter age" name="age" [ngModel]="selectedUser?.age"> 
+  <br> <br>
+  @if(!selectedUser){
+    <button> Add User  </button> <!-- Button for adding new user -->
+  } @else {  
+    <button> Update User  </button> <!-- Button for updating existing user -->
+  }
+</form>
+
+<!-- Loop through users and display details -->
+@for(user of users; track user.id){
+  <ul>
+    <li> {{user.name}} </li>
+    <li> {{user.email}} </li>
+    <li> {{user.age}} </li>
+    <li><button (click)="deleteUser(user.id)"> Delete </button></li>  <!-- Delete user -->
+    <li> <button (click)="selectUser(user.id)"> Update </button></li> <!-- Select user for update -->
+  </ul>
+}
