@@ -1,6 +1,6 @@
 <!-- app.component.html -->
 <h1 style="background: burlywood;"> API Call Service </h1>
-<a style="color: brown;" routerLink="admin">Admin</a>
+<a routerLink="admin">Admin</a>
 <router-outlet></router-outlet>
 
 <form #userForm="ngForm" (ngSubmit)="addUser(userForm.value)">
